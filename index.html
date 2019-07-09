@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/css.css">
+</head>
+
+<body>
+    <h1>
+        rss feed
+    </h1>
+    <button>a</button>
+    <button>b</button>
+    <button>c</button>
+    <span id="element"></a>
+</body>
+
+<script>
+    $.ajax({
+        type: "GET",
+        url: "/rss",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (result) {
+            for (var i = 0; i < 30; i++) {
+
+                var article = $("<a/>");
+                article.text(result[i].title);
+                article.attr({ "href": result[i].link })
+                $("#element").append(article)
+                
+
+
+            }
+
+
+
+        }
+    });
+</script>
+
+</html>
